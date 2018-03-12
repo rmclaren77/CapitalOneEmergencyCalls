@@ -5,14 +5,7 @@
       <head>
         <script>
 
-      $(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: "data.txt",
-        dataType: "text",
-        success: function(data) {processData(data);}
-     });
-});
+     
 
 function processData(allText) {
     var allTextLines = allText.split(/\r\n|\n/);
