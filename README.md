@@ -3,35 +3,48 @@
 ```html
 <html>
       <head>
+      <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd4ptsSCv0zld6T_v-U0dn3LiA-b2jiOA&libraries=visualization">
+</script>
         <script>
+var heatMapData = [
+  {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
+  new google.maps.LatLng(37.782, -122.445),
+  {location: new google.maps.LatLng(37.782, -122.443), weight: 2},
+  {location: new google.maps.LatLng(37.782, -122.441), weight: 3},
+  {location: new google.maps.LatLng(37.782, -122.439), weight: 2},
+  new google.maps.LatLng(37.782, -122.437),
+  {location: new google.maps.LatLng(37.782, -122.435), weight: 0.5},
 
+  {location: new google.maps.LatLng(37.785, -122.447), weight: 3},
+  {location: new google.maps.LatLng(37.785, -122.445), weight: 2},
+  new google.maps.LatLng(37.785, -122.443),
+  {location: new google.maps.LatLng(37.785, -122.441), weight: 0.5},
+  new google.maps.LatLng(37.785, -122.439),
+  {location: new google.maps.LatLng(37.785, -122.437), weight: 2},
+  {location: new google.maps.LatLng(37.785, -122.435), weight: 3}
+];
+
+var sanFrancisco = new google.maps.LatLng(37.774546, -122.433523);
+
+map = new google.maps.Map(document.getElementById('map'), {
+  center: sanFrancisco,
+  zoom: 13,
+  mapTypeId: 'satellite'
+});
+
+var heatmap = new google.maps.visualization.HeatmapLayer({
+  data: heatMapData
+});
+heatmap.setMap(map);
      
 
-function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    var lines = [];
-
-    for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
-
-            var tarr = [];
-            for (var j=0; j<headers.length; j++) {
-                tarr.push(headers[j]+":"+data[j]);
-            }
-            lines.push(tarr);
-        }
-    }
-   
-}
         </script>
        </head>
        <body>
-        <input id="code" value="AUA">
-        <button onclick="clickButton();">Find</button>
-        <div id="res">
-        </div>
+      
+      
+      
 
        </body>
     </html>
